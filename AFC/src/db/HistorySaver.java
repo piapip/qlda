@@ -26,4 +26,19 @@ public class HistorySaver implements HistorySaverInterface{
 		connection.close();
 	}
 	
+	@Override
+	public void updateEndingStation(String id, int stationId) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Connection connection = ConnectToMySQL.getInformation("transaction_history");
+		Statement statement = connection.createStatement();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		LocalDateTime now = LocalDateTime.now();
+		String sql = "UPDATE transactions SET status=" + Config.SUCCESSFUL +
+				", ending_station_ID=" + stationId +
+				", time_Out=\"" + dtf.format(now) + "\"" +
+				" WHERE certificateID=\"" + id + "\" AND status=" + Config.PENDING;
+		statement.executeUpdate(sql);
+		connection.close();
+	}
+	
 }
