@@ -80,4 +80,20 @@ public class OnewayTicketDataMapper implements TicketDBGateway {
 		return result;
 	}
 	
+	private double getFee(String id) throws ClassNotFoundException, SQLException {
+		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
+		Statement statement = connection.createStatement();
+		String sql = "Select * from oneway_ticket WHERE id='" + id + "'";
+		ResultSet rs = statement.executeQuery(sql);
+		double result = 0;
+		if(rs != null) {
+			while(rs.next()){
+				result = rs.getDouble(5);
+			}
+		}
+		connection.close();
+		return result;
+	}
+	
+	
 }
