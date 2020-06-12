@@ -25,4 +25,13 @@ public class Controller implements ControllerInterface {
 		this.historyGW = historyGW;
 	}
 	
+	@Override
+	public String enter(String certificateId, int stationId) throws ClassNotFoundException, SQLException {
+		String error = req.passEntering(certificateId);
+		if (error != null) return error;
+		ticketInt.updateCertificateEnter(certificateId);
+		historyInt.updateEmbarkingStation(certificateId, stationId);
+		return null;
+	}
+	
 }
