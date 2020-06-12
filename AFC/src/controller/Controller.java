@@ -34,4 +34,18 @@ public class Controller implements ControllerInterface {
 		return null;
 	}
 	
+	@Override
+	public String exit(String certificateId, int stationId) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		
+		double distance = stationInt.getDistance(historyGW.getLastHistoryByCertificateId(certificateId).getEmbarkingStationID(), stationId);
+		double fee = getFee(distance);
+		String error = req.passExiting(certificateId, fee);
+		if (error != null) return error;
+		ticketInt.updateCertificateExit(certificateId, fee);
+		historyInt.updateEndingStation(certificateId, stationId);
+		historyInt.createNewHistorySlot(certificateId);
+		return null;
+	}
+	
 }
