@@ -41,4 +41,12 @@ public class HistorySaver implements HistorySaverInterface{
 		connection.close();
 	}
 	
+	public void createNewHistorySlot(String id) throws ClassNotFoundException, SQLException {
+		Connection connection = ConnectToMySQL.getInformation("transaction_history");
+		Statement statement = connection.createStatement();
+		String sql = "INSERT INTO `transactions` (certificateID, status) VALUES('" + id + "', '0');";
+		statement.executeUpdate(sql);
+		connection.close();
+	}
+	
 }
