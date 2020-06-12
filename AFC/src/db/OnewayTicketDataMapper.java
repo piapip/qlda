@@ -95,5 +95,4 @@ public class OnewayTicketDataMapper implements TicketDBGateway {
 		return result;
 	}
 	
-	
 }
