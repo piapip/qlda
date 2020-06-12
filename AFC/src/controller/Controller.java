@@ -48,4 +48,13 @@ public class Controller implements ControllerInterface {
 		return null;
 	}
 	
+	private double getFee(double distance) {
+		if(distance <= Config.BASED_DISTANCE) return Config.BASED_FARE;
+		else {
+			distance = distance - Config.BASED_DISTANCE;
+			double cost = Config.BASED_FARE + Config.ADDITIONAL_FARE*Math.ceil(distance/Config.DEFAULT_ADDITION_DISTANCE);
+			return cost;
+		}
+	}
+	
 }
