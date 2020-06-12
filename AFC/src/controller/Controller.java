@@ -16,4 +16,13 @@ public class Controller implements ControllerInterface {
 	private HistorySaverInterface historyInt;
 	private HistoryDBGateway historyGW;
 
+	public Controller(RequirementInterface req, TicketUpdater ticketInt, StationDistanceInterface stationInt, HistorySaverInterface historyInt, HistoryDBGateway historyGW) {
+		// TODO Auto-generated constructor stub
+		this.req = req;
+		this.ticketInt = ticketInt;
+		this.stationInt = stationInt;
+		this.historyInt = historyInt;
+		this.historyGW = historyGW;
+	}
+	
 }
