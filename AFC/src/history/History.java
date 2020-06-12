@@ -41,4 +41,13 @@ public class History {
 	public int getEndingStationID() {
 		return endingStationID;
 	}
+	
+	@Override
+	public String toString() {
+		String result = "";
+		result = result + "CertificateId: " + this.certificateId + "\n";
+		if(this.dayIn != null) result = result + "Day in: " + this.dayIn + "\n";
+		if(this.dayOut != null) result = result + "Day out: " + this.dayOut + "\n";
+		return result;
+	}
 }
