@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
+	<name>qlda</name>
+=======
 	<name>qlda_AFC</name>
+>>>>>>> 79040fa3e61f954cd6a6bf12177bfc2fb0c727c5
 	<comment></comment>
 	<projects>
 	</projects>
