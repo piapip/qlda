@@ -32,6 +32,17 @@ public class RequirementOnewayTicket implements RequirementInterface{
 
 	@Override
 	public String passExiting(String certificateId, double fee) throws ClassNotFoundException, SQLException {
+		OnewayTicket ticket = (OnewayTicket) ticketGW.getCertificateById(certificateId);
+		if (ticket == null) return "Ticket doesn't exist. Please buy a new one.";
+		if(ticket.getStatus() == Config.EXPIRED) {
+			return "The ticket is already used.";
+		}
+		if (historyGW.getLastHistoryByCertificateId(certificateId).getStatus() != Config.PENDING) {
+			return "You can't exit the station with this ticket.";
+		}
+		if (ticket.getFare() < fee) 
+			return "You have gone too far. Please purchase another ticket with the price of " + fee;
 		return null;
 	}
 }
+
