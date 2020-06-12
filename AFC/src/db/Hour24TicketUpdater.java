@@ -38,7 +38,12 @@ public class Hour24TicketUpdater implements TicketUpdater {
 
 	@Override
 	public void updateCertificateExit(String certificateId, double fee) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
+		Statement statement = connection.createStatement();
+		String sql1 = "UPDATE hour24_ticket SET status=\"" + Config.SUCCESSFUL +  "\" WHERE id=\"" + certificateId + "\"";
+		statement.executeUpdate(sql1);
+		connection.close();
+
 	}
 	
 	private static String getActiveTime() {
@@ -54,10 +59,4 @@ public class Hour24TicketUpdater implements TicketUpdater {
 		Date dateExpired = (Date) expTime.getTime();
 		return dtf.format(dateExpired.getTime()); 
 	}
-	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		System.out.println(getExpiredTime());
-		System.out.println(getActiveTime().compareTo(getExpiredTime()));
-	}
-
 }
