@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 <<<<<<< HEAD
+	<name>qlda_AFC</name>
+=======
+<<<<<<< HEAD
 	<name>qlda</name>
 =======
 	<name>qlda_AFC</name>
 >>>>>>> 79040fa3e61f954cd6a6bf12177bfc2fb0c727c5
+>>>>>>> b3135b0d00d125745082d12227d4f5c62cc21e7c
 	<comment></comment>
 	<projects>
 	</projects>
