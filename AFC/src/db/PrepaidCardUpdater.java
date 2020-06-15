@@ -11,8 +11,11 @@ public class PrepaidCardUpdater implements TicketUpdater {
 
 	@Override
 	public void updateCertificateEnter(String certificateId) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		
+		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
+		Statement statement = connection.createStatement();
+		String sql = "UPDATE prepaid_card SET status=" + Config.PENDING + " WHERE id=\"" + certificateId + "\"";
+		statement.executeUpdate(sql);
+		connection.close();
 	}
 
 	@Override
