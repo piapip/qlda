@@ -2,6 +2,9 @@ package requirements;
 
 import java.sql.SQLException;
 
+import certificate.PrepaidCard;
+import certificate.TicketDBGateway;
+import history.HistoryDBGateway;
 import interactor.RequirementInterface;
 
 public class RequirementPrepaidCard implements RequirementInterface {
@@ -16,7 +19,15 @@ public class RequirementPrepaidCard implements RequirementInterface {
 
 	@Override
 	public String passEntering(String certificateId) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+		PrepaidCard card = (PrepaidCard) cardGateWay.getCertificateById(certificateId);
+		if (card == null) return "Card doesn't exist. Please buy a new one.";
+		if (card.getBalance() < Config.BASED_FARE) {
+			double requirement = Config.BASED_FARE - card.getBalance();
+			return "Card's balance is too low. Please recharge: " + requirement;
+		}
+		if (historyGW.getLastHistoryByCertificateId(certificateId).getStatus() != Config.UNUSED) {
+			return "You can't enter the station with this card. Probably stolen card.";
+		}
 		return null;
 	}
 
