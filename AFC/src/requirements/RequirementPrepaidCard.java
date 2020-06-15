@@ -33,7 +33,15 @@ public class RequirementPrepaidCard implements RequirementInterface {
 
 	@Override
 	public String passExiting(String certificateId, double fee) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+		PrepaidCard card = (PrepaidCard) cardGateWay.getCertificateById(certificateId);
+		if (card == null) return "Card doesn't exist. Please buy a new one.";
+		if (historyGW.getLastHistoryByCertificateId(certificateId).getStatus() != Config.PENDING) {
+			return "You can't enter the station with this card. Probably stolen card.";
+		}
+		if (card.getBalance() < fee) {
+			double requirement = fee - card.getBalance();
+			return "Card's balance is too low. Please recharge: " + requirement; 
+		}
 		return null;
 	}
 
