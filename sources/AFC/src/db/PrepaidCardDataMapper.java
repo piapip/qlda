@@ -8,8 +8,19 @@ import java.sql.Statement;
 import certificate.PrepaidCard;
 import certificate.TicketDBGateway;
 
+/**
+ * The Class PrepaidCardDataMapper.
+ */
 public class PrepaidCardDataMapper implements TicketDBGateway{
 	
+	/**
+	 * Gets the certificate by id.
+	 *
+	 * @param id the id
+	 * @return the certificate by id
+	 * @throws SQLException the SQL exception
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	@Override
 	public PrepaidCard getCertificateById(String id) throws SQLException, ClassNotFoundException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
@@ -31,6 +42,14 @@ public class PrepaidCardDataMapper implements TicketDBGateway{
 		return result;
 	}
 	
+	/**
+	 * Gets the balance.
+	 *
+	 * @param id the id
+	 * @return the balance
+	 * @throws SQLException the SQL exception
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	private double getBalance(String id) throws SQLException, ClassNotFoundException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
 		Statement statement = connection.createStatement();
