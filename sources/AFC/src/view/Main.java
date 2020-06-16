@@ -23,6 +23,16 @@ import requirements.RequirementPrepaidCard;
 import station.StationDistanceByDistance;
 
 public class Main {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 * @throws InvalidIDException the invalid ID exception
+	 * @throws InterruptedException the interrupted exception
+	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, InvalidIDException, InterruptedException {
 		int stationId;
 		int scanOption;

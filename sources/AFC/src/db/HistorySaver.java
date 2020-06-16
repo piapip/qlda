@@ -9,8 +9,19 @@ import java.time.format.DateTimeFormatter;
 
 import interactor.HistorySaverInterface;
 
+/**
+ * The Class HistorySaver.
+ */
 public class HistorySaver implements HistorySaverInterface{
 	
+	/**
+	 * Update embarking station.
+	 *
+	 * @param id the certificate id
+	 * @param stationId the station id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateEmbarkingStation(String id, int stationId) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
@@ -26,6 +37,14 @@ public class HistorySaver implements HistorySaverInterface{
 		connection.close();
 	}
 	
+	/**
+	 * Update ending station.
+	 *
+	 * @param id the certificate id
+	 * @param stationId the station id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateEndingStation(String id, int stationId) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
@@ -41,6 +60,13 @@ public class HistorySaver implements HistorySaverInterface{
 		connection.close();
 	}
 	
+	/**
+	 * Creates the new history slot.
+	 *
+	 * @param id the id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	public void createNewHistorySlot(String id) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("transaction_history");
 		Statement statement = connection.createStatement();

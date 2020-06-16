@@ -8,8 +8,19 @@ import java.sql.Statement;
 import station.Station;
 import station.StationDBGateway;
 
+/**
+ * The Class StationDataMapper.
+ */
 public class StationDataMapper implements StationDBGateway {
 
+	/**
+	 * Gets the station by id.
+	 *
+	 * @param id the id
+	 * @return the station by id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public Station getStationById(int id) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("station_system");

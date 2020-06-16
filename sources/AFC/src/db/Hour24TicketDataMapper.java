@@ -8,8 +8,19 @@ import java.sql.Statement;
 import certificate.Hour24Ticket;
 import certificate.TicketDBGateway;
 
+/**
+ * The Class Hour24TicketDataMapper.
+ */
 public class Hour24TicketDataMapper implements TicketDBGateway  {
 	
+	/**
+	 * Gets the 24-hour ticket by id.
+	 *
+	 * @param id the id
+	 * @return a 24-hour ticket specified by certificate id if found, null otherwise
+	 * @throws SQLException the SQL exception
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	@Override
 	public Hour24Ticket getCertificateById(String id) throws SQLException, ClassNotFoundException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");;

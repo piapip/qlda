@@ -12,8 +12,18 @@ import java.util.Date;
 
 import interactor.TicketUpdater;
 
+/**
+ * The Class Hour24TicketUpdater.
+ */
 public class Hour24TicketUpdater implements TicketUpdater {
 
+	/**
+	 * Update 24-hour ticket status to "enter".
+	 *
+	 * @param certificateId the certificate id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateCertificateEnter(String certificateId) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
@@ -36,6 +46,14 @@ public class Hour24TicketUpdater implements TicketUpdater {
 		connection.close();
 	}
 
+	/**
+	 * Update 24-hour ticket status to "exit".
+	 *
+	 * @param certificateId the certificate id
+	 * @param fee 24-hour ticket fee
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateCertificateExit(String certificateId, double fee) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
@@ -46,12 +64,22 @@ public class Hour24TicketUpdater implements TicketUpdater {
 
 	}
 	
+	/**
+	 * Gets the active time.
+	 *
+	 * @return the active time
+	 */
 	private static String getActiveTime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		LocalDateTime dateActive = LocalDateTime.now();
 		return dtf.format(dateActive);
 	}
 	
+	/**
+	 * Gets the expired time.
+	 *
+	 * @return the expired time
+	 */
 	private static String getExpiredTime() {
 		Calendar expTime = Calendar.getInstance();
 		SimpleDateFormat dtf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

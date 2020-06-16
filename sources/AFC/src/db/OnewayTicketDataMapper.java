@@ -8,8 +8,19 @@ import java.sql.Statement;
 import certificate.OnewayTicket;
 import certificate.TicketDBGateway;
 
+/**
+ * The Class OnewayTicketDataMapper.
+ */
 public class OnewayTicketDataMapper implements TicketDBGateway {
 	 
+	/**
+	 * Gets the one-way ticket by id.
+	 *
+	 * @param id the id
+	 * @return the one-way ticket specified by id if found, null otherwise
+	 * @throws SQLException the SQL exception
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	@Override
 	public OnewayTicket getCertificateById(String id) throws SQLException, ClassNotFoundException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
@@ -35,6 +46,14 @@ public class OnewayTicketDataMapper implements TicketDBGateway {
 		return result;
 	}
 	
+	/**
+	 * Gets the one-way ticket status.
+	 *
+	 * @param id the one-way ticket id
+	 * @return the one-way ticket status
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	private int getStatus(String id) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
 		Statement statement = connection.createStatement();
@@ -50,6 +69,14 @@ public class OnewayTicketDataMapper implements TicketDBGateway {
 		return result;
 	}
 	
+	/**
+	 * Gets the starting station.
+	 *
+	 * @param id the id
+	 * @return the starting station
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	private int getStartingStation(String id) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
 		Statement statement = connection.createStatement();
@@ -65,6 +92,14 @@ public class OnewayTicketDataMapper implements TicketDBGateway {
 		return result;
 	}
 	
+	/**
+	 * Gets the ending station.
+	 *
+	 * @param id the id
+	 * @return the ending station
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	private int getEndingStation(String id) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
 		Statement statement = connection.createStatement();
@@ -80,6 +115,14 @@ public class OnewayTicketDataMapper implements TicketDBGateway {
 		return result;
 	}
 	
+	/**
+	 * Gets the fee.
+	 *
+	 * @param id the id
+	 * @return the fee
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	private double getFee(String id) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
 		Statement statement = connection.createStatement();

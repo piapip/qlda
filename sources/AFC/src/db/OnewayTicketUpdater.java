@@ -6,8 +6,18 @@ import java.sql.Statement;
 
 import interactor.TicketUpdater;
 
+/**
+ * The Class OnewayTicketUpdater.
+ */
 public class OnewayTicketUpdater implements TicketUpdater {
 
+	/**
+	 * Update one-way ticket status to "enter".
+	 *
+	 * @param certificateId the one-way ticket id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateCertificateEnter(String certificateId) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
@@ -18,6 +28,14 @@ public class OnewayTicketUpdater implements TicketUpdater {
 		connection.close();
 	}
 
+	/**
+	 * Update one-way ticket status to "exit".
+	 *
+	 * @param certificateId the certificate id
+	 * @param fee the one-way ticket fee
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateCertificateExit(String certificateId, double fee) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
