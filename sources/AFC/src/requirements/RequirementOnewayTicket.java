@@ -7,16 +7,34 @@ import certificate.TicketDBGateway;
 import history.HistoryDBGateway;
 import interactor.RequirementInterface;
 
+/**
+ * The Class RequirementOnewayTicket.
+ */
 public class RequirementOnewayTicket implements RequirementInterface{
 
 	private TicketDBGateway ticketGW;
+
 	private HistoryDBGateway historyGW;
-	//	this one left me wondering... shouldn't I specify this initiator already here, the book said that I mustn't do that
+	
+	/**
+	 * Instantiates a new requirement for one-way ticket.
+	 *
+	 * @param ticketMapper the ticket mapper
+	 * @param historyMapper the history mapper
+	 */
 	public RequirementOnewayTicket(TicketDBGateway ticketMapper, HistoryDBGateway historyMapper) {
 		this.ticketGW = ticketMapper;
 		this.historyGW = historyMapper;
 	}
 	
+	/**
+	 * Check if the one-way ticket can be used to enter the station.
+	 *
+	 * @param certificateId the certificate id
+	 * @return the string represent the result
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public String passEntering(String certificateId) throws ClassNotFoundException, SQLException {
 		OnewayTicket ticket = (OnewayTicket) ticketGW.getCertificateById(certificateId);
@@ -30,6 +48,15 @@ public class RequirementOnewayTicket implements RequirementInterface{
 		return null;
 	}
 
+	/**
+	 * Check if the one-way ticket can be used to exit the station.
+	 *
+	 * @param certificateId the certificate id
+	 * @param fee the fee
+	 * @return the string represent the result
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public String passExiting(String certificateId, double fee) throws ClassNotFoundException, SQLException {
 		OnewayTicket ticket = (OnewayTicket) ticketGW.getCertificateById(certificateId);
