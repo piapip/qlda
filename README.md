@@ -5,7 +5,7 @@
 * Name: ITSS Project Management
 * Course code: IT4947
 * Term: 20192
-* Lecturer: Nguyen Dinh Thuan
+* Lecturer: Nguyễn Đình Thuận
 
 ## Group Members ##
 
