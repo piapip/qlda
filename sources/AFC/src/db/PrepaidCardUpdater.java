@@ -7,8 +7,18 @@ import java.sql.Statement;
 
 import interactor.TicketUpdater;
 
+/**
+ * The Class PrepaidCardUpdater.
+ */
 public class PrepaidCardUpdater implements TicketUpdater {
 
+	/**
+	 * Update certificate enter.
+	 *
+	 * @param certificateId the certificate id
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateCertificateEnter(String certificateId) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
@@ -18,6 +28,14 @@ public class PrepaidCardUpdater implements TicketUpdater {
 		connection.close();
 	}
 
+	/**
+	 * Update certificate exit.
+	 *
+	 * @param certificateId the certificate id
+	 * @param fee the fee
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public void updateCertificateExit(String certificateId, double fee) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
@@ -32,6 +50,14 @@ public class PrepaidCardUpdater implements TicketUpdater {
 		connection.close();		
 	}
 	
+	/**
+	 * Gets the balance.
+	 *
+	 * @param certificateId the certificate id
+	 * @return the balance
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	private double getBalance(String certificateId) throws ClassNotFoundException, SQLException {
 		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
 		Statement statement = connection.createStatement();

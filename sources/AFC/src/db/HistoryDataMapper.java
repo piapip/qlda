@@ -8,8 +8,19 @@ import java.sql.Statement;
 import history.History;
 import history.HistoryDBGateway;
 
+/**
+ * The Class HistoryDataMapper.
+ */
 public class HistoryDataMapper implements HistoryDBGateway {
 	
+	/**
+	 * Gets the last history by certificate id.
+	 *
+	 * @param id the certificate id
+	 * @return the last history of the certificate
+	 * @throws SQLException the SQL exception
+	 * @throws ClassNotFoundException the class not found exception
+	 */
 	public History getLastHistoryByCertificateId(String id) throws SQLException, ClassNotFoundException {
 		Connection connection = ConnectToMySQL.getInformation("transaction_history");
 		Statement statement = connection.createStatement();

@@ -4,14 +4,31 @@ import java.sql.SQLException;
 
 import interactor.StationDistanceInterface;
 
+/**
+ * The Class StationDistanceByDistance.
+ */
 public class StationDistanceByDistance implements StationDistanceInterface{
 	
 	private StationDBGateway gw;
-	//	this one left me wondering... shouldn't I specify this initiator already here, the book said that I mustn't do that
+	
+	/**
+	 * Instantiates a new station distance by station gateway.
+	 *
+	 * @param gw the station gateway
+	 */
 	public StationDistanceByDistance(StationDBGateway gw) {
 		this.gw = gw;
 	}
 	
+	/**
+	 * Gets the distance between the two stations specified by starting station id and ending station id.
+	 *
+	 * @param startingStationId the starting station id
+	 * @param endingStationId the ending station id
+	 * @return the distance
+	 * @throws ClassNotFoundException the class not found exception
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public double getDistance(int startingStationId, int endingStationId) throws ClassNotFoundException, SQLException {
 		Station starting = gw.getStationById(startingStationId);
