@@ -21,11 +21,7 @@ public class PrepaidCardUpdater implements TicketUpdater {
 	 */
 	@Override
 	public void updateCertificateEnter(String certificateId) throws ClassNotFoundException, SQLException {
-		Connection connection = ConnectToMySQL.getInformation("travelling_certificate");
-		Statement statement = connection.createStatement();
-		String sql = "UPDATE prepaid_card SET status=" + Config.PENDING + " WHERE id=\"" + certificateId + "\"";
-		statement.executeUpdate(sql);
-		connection.close();
+		//No need to implement this function since there will be no change for the card upon entering.
 	}
 
 	/**
@@ -44,9 +40,8 @@ public class PrepaidCardUpdater implements TicketUpdater {
 		double newBalance = getBalance(certificateId) - fee;
 		String sql = "UPDATE prepaid_card SET balance=\"" + newBalance +"\" WHERE id=\"" + certificateId + "\"";
 		statement.executeUpdate(sql);
-		connection.close();
-		String statusUpdater = "UPDATE prepaid_card SET status=" + Config.UNUSED + " WHERE id=\"" + certificateId + "\"";
-		statement.executeUpdate(statusUpdater);
+//		String statusUpdater = "UPDATE prepaid_card SET status=" + Config.UNUSED + " WHERE id=\"" + certificateId + "\"";
+//		statement.executeUpdate(statusUpdater);
 		connection.close();		
 	}
 	

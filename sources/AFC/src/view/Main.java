@@ -56,7 +56,7 @@ public class Main {
 			} while(enterOrExit > 2 || enterOrExit < 1);
 			
 			do {
-				System.out.println("What are you using?:\n1. Card\n2. One way Ticket\n3.24-hour Ticket");
+				System.out.println("What are you using?:\n1. Card\n2. One way Ticket\n3. 24-hour Ticket");
 				scanOption = reader.nextInt();
 				reader.nextLine();
 			} while(scanOption > 3 || scanOption < 1);
